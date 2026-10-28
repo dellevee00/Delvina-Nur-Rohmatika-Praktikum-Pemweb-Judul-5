@@ -4,6 +4,13 @@
  * File: test_koneksi.php
  */
 
+try {
+    $this->conn = new PDO($dsn, $this->username,$this->password, $options);
+} catch (PDOException $e) {
+    throw new PDOException("koneksi ke basis data gagal: " .
+    $e->getMessage(), (int)$e->getCode());
+}
+
 require_once __DIR__ . '/config/database.php';
 
 try {
